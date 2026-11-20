@@ -1,8 +1,9 @@
 name: CI y seguridad
 on:
   push:
-    branches: [main, test, 'joseph/**']
+    branches: [main]
   pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -104,37 +105,52 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - run: docker build -t ciclolima-api:ci backend
-  deploy:
-    name: Desplegar en Render
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')
-    needs: [backend, frontend, dependencies, sast, container]
+  security:
+    name: Seguridad
+    if: ${{ !cancelled() }}
+    needs: [dependencies, sast, container]
     runs-on: ubuntu-latest
-    environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'test' }}
+    steps:
+      - name: Comprobar los controles requeridos
+        env:
+          DEPENDENCIES: ${{ needs.dependencies.result }}
+          SAST: ${{ needs.sast.result }}
+          CONTAINER: ${{ needs.container.result }}
+        run: |
+          for name in DEPENDENCIES SAST CONTAINER; do
+            if [ "${!name}" != success ]; then
+              echo "::error::$name no pasó. No se permite desplegar."
+              exit 1
+            fi
+          done
+  deploy-stage:
+    name: Deploy a stage
+    if: >-
+      ${{ !cancelled() && github.event_name == 'push' && github.ref == 'refs/heads/main' &&
+          needs.backend.result == 'success' && needs.frontend.result == 'success' &&
+          needs.security.result == 'success' }}
+    needs: [backend, frontend, security]
+    runs-on: ubuntu-latest
+    environment: stage
     env:
       API_DEPLOY_HOOK: ${{ secrets.RENDER_API_DEPLOY_HOOK }}
       WEB_DEPLOY_HOOK: ${{ secrets.RENDER_WEB_DEPLOY_HOOK }}
       API_URL: ${{ vars.API_URL }}
       WEB_URL: ${{ vars.WEB_URL }}
     steps:
-      - name: Validar configuración del ambiente
-        run: |
-          for name in API_DEPLOY_HOOK WEB_DEPLOY_HOOK API_URL WEB_URL; do
-            if [ -z "${!name}" ]; then
-              echo "::error::Falta configurar $name en el environment de GitHub. No se acreditó despliegue."
-              exit 1
-            fi
-          done
-      - name: Solicitar despliegue
-        run: |
-          curl --fail --silent --show-error --request POST "$API_DEPLOY_HOOK" --output /dev/null
-          curl --fail --silent --show-error --request POST "$WEB_DEPLOY_HOOK" --output /dev/null
-      - name: Verificar disponibilidad
-        run: |
-          for attempt in $(seq 1 24); do
-            if curl --fail --silent "$API_URL/ready" | jq --exit-status --arg sha "$GITHUB_SHA" '.commit == $sha' > /dev/null && curl --fail --silent "$WEB_URL/version.json" | jq --exit-status --arg sha "$GITHUB_SHA" '.commit == $sha' > /dev/null; then
-              echo "API y web disponibles con el commit esperado."
-              exit 0
-            fi
-            sleep 15
-          done
-          exit 1
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: bash .github/scripts/deploy.sh
+  deploy-production:
+    name: Deploy a producción
+    if: ${{ !cancelled() && github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.deploy-stage.result == 'success' }}
+    needs: deploy-stage
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      API_DEPLOY_HOOK: ${{ secrets.RENDER_API_DEPLOY_HOOK }}
+      WEB_DEPLOY_HOOK: ${{ secrets.RENDER_WEB_DEPLOY_HOOK }}
+      API_URL: ${{ vars.API_URL }}
+      WEB_URL: ${{ vars.WEB_URL }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: bash .github/scripts/deploy.sh
