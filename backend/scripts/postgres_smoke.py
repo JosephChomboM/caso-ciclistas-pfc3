@@ -17,9 +17,12 @@ with TestClient(app) as client:
     assert client.put("/api/parking/1/favorite", headers=headers).status_code == 204
     assert len(client.get("/api/parking/favorites", headers=headers).json()) == 1
     for _ in range(2):
-        assert client.put(
-            "/api/billing/subscription", headers=headers, json={"plan_code": "plus"}
-        ).status_code == 200
+        assert (
+            client.put(
+                "/api/billing/subscription", headers=headers, json={"plan_code": "plus"}
+            ).status_code
+            == 200
+        )
     assert len(client.get("/api/billing/invoices", headers=headers).json()) == 1
     export = client.get("/api/billing/favorites.csv", headers=headers)
     assert export.status_code == 200
