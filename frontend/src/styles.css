@@ -673,9 +673,83 @@ footer {
   align-items: center;
   gap: 8px;
 }
+.billing-panel {
+  max-width: 850px;
+}
+.plan-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 32px 0;
+}
+.plan-options article {
+  border-top: 1px solid var(--line);
+  padding: 24px 0;
+}
+.plan-options ul {
+  padding-left: 20px;
+  line-height: 1.8;
+  min-height: 100px;
+}
+.plan-price {
+  font-size: 28px;
+  font-weight: 700;
+}
+.plan-price span {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+}
+.export-favorites,
+.invoice-history {
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+.invoice-history table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+.invoice-history caption {
+  text-align: left;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+.invoice-history th,
+.invoice-history td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.footer-action {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-action:hover {
+  background: transparent;
+}
+@media (max-width: 560px) {
+  .plan-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .plan-options ul {
+    min-height: auto;
+  }
+}
 @media (max-width: 760px) {
   .account-nav {
     gap: 6px;
+    flex-wrap: wrap;
   }
   .account-nav button {
     padding: 8px;

@@ -47,10 +47,10 @@ export const session = {
   },
 };
 
-export async function api<T>(
+async function request(
   path: string,
   options: RequestInit = {},
-): Promise<T> {
+): Promise<Response> {
   const headers = new Headers(options.headers);
   if (options.body) headers.set("Content-Type", "application/json");
   if (token) headers.set("Authorization", `Bearer ${token}`);
@@ -73,5 +73,23 @@ export async function api<T>(
         : "Revisa los datos e inténtalo nuevamente.",
     );
   }
+  return response;
+}
+
+export async function api<T>(
+  path: string,
+  options: RequestInit = {},
+): Promise<T> {
+  const response = await request(path, options);
   return response.status === 204 ? (undefined as T) : response.json();
+}
+
+export async function downloadFavorites(): Promise<void> {
+  const response = await request("/billing/favorites.csv");
+  const url = URL.createObjectURL(await response.blob());
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "ciclolima-favoritos.csv";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
