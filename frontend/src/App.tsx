@@ -11,11 +11,12 @@ import { api, type Cycleway, type Parking, type User } from "./api/client";
 import Account from "./components/Account";
 import { Moderation, ReportForm, ReportsList } from "./components/Reports";
 import MapCanvas from "./components/MapCanvas";
+import Recommendations from "./components/Recommendations";
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [panel, setPanel] = useState<
-    "account" | "report" | "moderation" | null
+    "account" | "report" | "moderation" | "recommendations" | null
   >(null);
   const [favorites, setFavorites] = useState<Parking[]>([]);
   const [onlyFavorites, setOnlyFavorites] = useState(false);
@@ -121,6 +122,9 @@ export default function App() {
           <button onClick={() => setPanel(user ? "report" : "account")}>
             Reportar incidencia
           </button>
+          <button onClick={() => setPanel("recommendations")}>
+            Sugerencias
+          </button>
           {user?.role === "moderator" && (
             <button onClick={() => setPanel("moderation")}>Moderar</button>
           )}
@@ -150,7 +154,21 @@ export default function App() {
         {panel && (
           <div className="panel-wrap">
             <button onClick={() => setPanel(null)}>Volver al mapa</button>
-            {panel === "account" ? (
+            {panel === "recommendations" ? (
+              <Recommendations
+                districts={[
+                  ...new Set(cycleways.map((x) => x.district)),
+                ].sort()}
+                onSelect={(route) => {
+                  setView("cycleways");
+                  setDistrict(route.district);
+                  setQuery("");
+                  setCondition("");
+                  setSelected(route.id);
+                  setPanel(null);
+                }}
+              />
+            ) : panel === "account" ? (
               <Account
                 user={user}
                 onUser={(value) => {
