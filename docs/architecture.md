@@ -11,7 +11,9 @@ flowchart LR
   A --> C[Ciclovías]
   A --> R[Reportes y moderación]
   A --> P[Estacionamientos y favoritos]
-  N & C & R & P --> D[(PostgreSQL)]
+  A --> B[Billing demo y exportación CSV]
+  C --> S[Sugerencias explicables]
+  N & C & R & P & B --> D[(PostgreSQL privado en Supabase)]
 ```
 
 ## Capas
@@ -36,6 +38,18 @@ SQLite permite desarrollo local sin servicios externos; PostgreSQL es obligatori
 - Las condiciones mostradas son reportadas, no certificaciones de seguridad.
 - Los datos iniciales son sintéticos y llevan identificación de demostración.
 - La API no registra ubicación continua ni necesita permisos de geolocalización.
+
+## Diagramas editables y despliegue
+
+`docs/diagrams/Arquitectura_CicloLima.drawio` contiene arquitectura lógica y despliegue, con logos pequeños. Las capturas originales abiertas en diagrams.net están en `docs/evidence/`. React consulta teselas de OpenStreetMap desde el navegador y la API mediante HTTPS; el servidor accede al esquema privado de Supabase mediante SQL y TLS. Los servicios estáticos y API de Render, y las bases de Supabase, son independientes por ambiente.
+
+La autenticación es propia de FastAPI con JWT y Argon2. Supabase se utiliza como PostgreSQL gestionado. El módulo billing almacena planes y comprobantes simulados y exporta los favoritos de su propietario; no integra una pasarela de pagos. Las sugerencias pertenecen al módulo ciclovías y comparan distancia e incidencias publicadas mediante reglas explicables.
+
+GitHub Actions valida PRs a main con build, tests y seguridad. Después del merge despliega el SHA a stage; producción requiere aprobar la promoción de ese mismo SHA. Render ofrece logs y health checks; el pipeline comprueba `/ready` y `/version.json`.
+
+## Justificación del stack
+
+React y Leaflet sincronizan mapa, filtros y lista para el ciclista. FastAPI valida reportes y aplica permisos en una API documentada. SQLAlchemy y PostgreSQL mantienen relaciones y restricciones entre usuarios, reportes, favoritos y planes. Alembic permite reproducir el esquema sin crear tablas implícitamente al atender peticiones. Render y Supabase reducen los componentes operativos del MVP y permiten aislar los ambientes. GitHub Actions reúne pruebas y seguridad antes del despliegue; Jira vincula capacidades, aceptación y evidencia de la simulación.
 
 ## Referencias técnicas
 

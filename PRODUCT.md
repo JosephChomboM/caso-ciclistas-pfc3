@@ -35,4 +35,4 @@ Enunciado académico y backlog PCC. No se dispone de una base oficial de infraes
 
 ## Open decisions
 
-Render y Supabase están configurados en recursos exclusivos de CicloLima, separados por ambiente. Permanecen pendientes los datos geográficos oficiales y la fecha real de entrega. El Gantt es una planificación académica; Jira conserva eventos de una simulación comprimida. El usuario mantiene detenidos el ZIP y el material final de presentación.
+Render y Supabase están configurados en recursos exclusivos de CicloLima, separados por ambiente. Permanecen pendientes los datos geográficos oficiales y la fecha real de entrega. El Gantt es una planificación académica; Jira conserva eventos de una simulación comprimida. El usuario autorizó completar el informe y ZIP con capturas originales el 20 de noviembre de 2026.

@@ -89,11 +89,11 @@ def burndowns():
     axes[0].xaxis.set_major_formatter(mdates.DateFormatter("%H:%M", tz=TZ))
     axes[0].set(title="Sprint 4 · línea base replanificada de 7 SP", ylabel="SP restantes", ylim=(0, 7.5))
     axes[0].legend()
-    axes[1].bar(["S1", "S2", "S3", "S4*"], velocity, color=COLORS)
+    axes[1].bar(["S1", "S2", "S3", "S4"], velocity, color=COLORS)
     axes[1].set(title="SP aceptados dentro de cada ventana", ylabel="SP", ylim=(0, 15))
     for index, value in enumerate(velocity):
         axes[1].text(index, value + 0.3, str(value), ha="center")
-    fig.suptitle("*Sprint 4 activo: velocidad provisional. Sus 13 SP previos quedan fuera de esta ventana.")
+    fig.suptitle("Cuatro sprints cerrados. Los 13 SP previos del sprint 4 quedan fuera de su ventana replanificada.")
     fig.savefig(OUT / "velocidad-y-sprint4.png", dpi=160)
     plt.close(fig)
 

@@ -8,13 +8,13 @@
     {
       "sprint": {
         "id": 36,
-        "name": "PCC Sprint 1 · Acceso y mapa",
         "state": "closed",
-        "goal": "Habilitar registro, sesión y mapa: PCC-5 (3 SP), PCC-6 (5 SP), PCC-8 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas.",
+        "name": "PCC Sprint 1 · Acceso y mapa",
         "startDate": "2026-11-20T03:20:37.000Z",
         "endDate": "2026-11-20T04:20:37.000Z",
         "completeDate": "2026-11-20T03:54:33.506Z",
-        "originBoardId": 34
+        "originBoardId": 34,
+        "goal": "Habilitar registro, sesión y mapa: PCC-5 (3 SP), PCC-6 (5 SP), PCC-8 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas."
       },
       "issue_keys": [
         "PCC-8",
@@ -25,13 +25,13 @@
     {
       "sprint": {
         "id": 37,
-        "name": "PCC Sprint 2 · Consulta y aportes",
         "state": "closed",
-        "goal": "Consultar tramos y recibir incidencias: PCC-9 (3 SP), PCC-10 (5 SP), PCC-11 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas.",
+        "name": "PCC Sprint 2 · Consulta y aportes",
         "startDate": "2026-11-20T03:22:56.000Z",
         "endDate": "2026-11-20T04:22:56.000Z",
         "completeDate": "2026-11-20T03:53:42.911Z",
-        "originBoardId": 34
+        "originBoardId": 34,
+        "goal": "Consultar tramos y recibir incidencias: PCC-9 (3 SP), PCC-10 (5 SP), PCC-11 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas."
       },
       "issue_keys": [
         "PCC-11",
@@ -42,13 +42,13 @@
     {
       "sprint": {
         "id": 38,
-        "name": "PCC Sprint 3 · Moderación y estacionamientos",
         "state": "closed",
-        "goal": "Moderar reportes y consultar estacionamientos: PCC-12 (3 SP), PCC-13 (5 SP), PCC-14 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas.",
+        "name": "PCC Sprint 3 · Moderación y estacionamientos",
         "startDate": "2026-11-20T03:25:46.000Z",
         "endDate": "2026-11-20T04:25:46.000Z",
         "completeDate": "2026-11-20T03:52:38.729Z",
-        "originBoardId": 34
+        "originBoardId": 34,
+        "goal": "Moderar reportes y consultar estacionamientos: PCC-12 (3 SP), PCC-13 (5 SP), PCC-14 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas."
       },
       "issue_keys": [
         "PCC-14",
@@ -59,12 +59,13 @@
     {
       "sprint": {
         "id": 39,
+        "state": "closed",
         "name": "PCC Sprint 4 · Preferencias y mejoras",
-        "state": "active",
-        "goal": "Validar datos, footer, sugerencias y billing demo. Backlog replanificado: PCC-17 (1), PCC-18 (1), PCC-19 (2) y PCC-20 (3): 7 SP. Ventana de 1 hora; cada cierre exige pruebas y stage. Los 13 SP anteriores son trabajo previo. Se conservan todas las transiciones.",
         "startDate": "2026-11-20T04:09:00.000Z",
         "endDate": "2026-11-20T05:09:00.000Z",
-        "originBoardId": 34
+        "completeDate": "2026-11-20T05:40:39.078Z",
+        "originBoardId": 34,
+        "goal": "Validar datos, footer, sugerencias y billing demo. Backlog replanificado: PCC-17 (1), PCC-18 (1), PCC-19 (2) y PCC-20 (3): 7 SP. Ventana de 1 hora; cada cierre exige pruebas y stage. Los 13 SP anteriores son trabajo previo. Se conservan todas las transiciones."
       },
       "issue_keys": [
         "PCC-17",
@@ -929,5 +930,11 @@
       "own favorite CSV downloaded and parsed",
       "synthetic report pending moderation"
     ]
+  },
+  "teacher_access": {
+    "verified": true,
+    "name": "Kenny Disney Neira Neira",
+    "source": "Jira project Access page",
+    "date": "2026-11-20"
   }
 }

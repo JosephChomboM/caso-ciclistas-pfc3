@@ -11,7 +11,7 @@ Aplicación académica para consultar ciclovías de Lima, registrar incidencias 
 
 ## Arquitectura
 
-Monolito modular en capas, siguiendo la organización de Ayni: React y TypeScript → API FastAPI → servicios de negocio → repositorios SQLAlchemy → PostgreSQL. Los módulos son usuarios, ciclovías, reportes y estacionamientos. Los datos de demostración no acreditan condiciones reales de seguridad.
+Monolito modular en capas, siguiendo la organización de Ayni: React y TypeScript → API FastAPI → servicios de negocio → repositorios SQLAlchemy → PostgreSQL. Los módulos son usuarios, ciclovías, reportes, estacionamientos y billing; las sugerencias pertenecen a ciclovías. Los datos de demostración no acreditan condiciones reales de seguridad.
 
 ```text
 backend/
@@ -20,6 +20,7 @@ backend/
   app/modules/cycleways/ mapa, filtros y detalle de tramos
   app/modules/reports/  incidencias y moderación
   app/modules/parking/  estacionamientos y favoritos
+  app/modules/billing/  planes demo, comprobantes y exportación
   migrations/           esquema versionado con Alembic
   tests/                reglas y flujos HTTP
 frontend/
@@ -94,3 +95,7 @@ Los PR enlazan las historias PCC correspondientes. Los commits usan la identidad
 ## Entrega
 
 El informe debe incluir evidencias de Jira, cuatro sprints, burndown, Gantt, arquitectura, pipeline y despliegue. Un pipeline configurado no acredita una ejecución satisfactoria ni una aplicación desplegada: esas evidencias se añaden al verificarlas.
+
+## Evidencias académicas
+
+La arquitectura lógica y de despliegue editable está en [draw.io](docs/diagrams/Arquitectura_CicloLima.drawio). Las capturas originales de Jira, GitHub, Render, Supabase, la web y diagrams.net están en `docs/evidence/`. Los cuatro sprints están cerrados; el cierre y la replanificación se explican en [Scrum](docs/scrum.md).
