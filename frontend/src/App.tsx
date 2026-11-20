@@ -1,9 +1,17 @@
 import { useCallback, useEffect, useState } from 'react'
 import { ArrowUpRight, Bike, MapPin, ParkingSquare, Route, Search } from 'lucide-react'
-import { api, type Cycleway, type Parking } from './api/client'
+import { api, type Cycleway, type Parking, type User } from './api/client'
+import Account from './components/Account'
+import { Moderation, ReportForm, ReportsList } from './components/Reports'
 import MapCanvas from './components/MapCanvas'
 
 export default function App() {
+  const [user, setUser] = useState<User | null>(null)
+  const [panel, setPanel] = useState<'account' | 'report' | 'moderation' | null>(null)
+  const [favorites, setFavorites] = useState<Parking[]>([])
+  const [onlyFavorites, setOnlyFavorites] = useState(false)
+  const [notice, setNotice] = useState('')
+  const [favoriteBusy, setFavoriteBusy] = useState(false)
   const [view, setView] = useState<'cycleways' | 'parking'>('cycleways')
   const [district, setDistrict] = useState('')
   const [condition, setCondition] = useState('')
@@ -17,6 +25,24 @@ export default function App() {
   const select = useCallback((id: number) => setSelected(id), [])
   useEffect(() => {
     let active = true
+    if (!user) { setFavorites([]); setOnlyFavorites(false); return }
+    api<Parking[]>('/parking/favorites').then(x => { if (active) setFavorites(x) })
+      .catch(e => { if (active) setNotice(e.message) })
+    return () => { active = false }
+  }, [user])
+  async function favorite(id: number) {
+    if (!user) { setPanel('account'); return }
+    setFavoriteBusy(true); setNotice('')
+    try {
+      const exists = favorites.some(x => x.id === id)
+      await api(`/parking/${id}/favorite`, { method: exists ? 'DELETE' : 'PUT' })
+      setFavorites(await api<Parking[]>('/parking/favorites'))
+      setNotice(exists ? 'Retirado de tus favoritos.' : 'Guardado en tus favoritos.')
+    } catch (e) { setNotice(e instanceof Error ? e.message : 'No se pudo guardar.') }
+    finally { setFavoriteBusy(false) }
+  }
+  useEffect(() => {
+    let active = true
     setLoading(true); setError(''); setSelected(null)
     Promise.all([api<Cycleway[]>('/cycleways'), api<Parking[]>('/parking')])
       .then(([routes, places]) => { if (active) { setCycleways(routes); setParking(places) } })
@@ -26,20 +52,25 @@ export default function App() {
   }, [attempt])
   const routes = cycleways.filter(x => (!district || x.district === district)
     && (!condition || x.condition === condition) && x.name.toLowerCase().includes(query.toLowerCase()))
-  const places = parking.filter(x => (!district || x.district === district)
+  const places = (onlyFavorites ? favorites : parking).filter(x => (!district || x.district === district)
     && x.name.toLowerCase().includes(query.toLowerCase()))
   const rows = view === 'cycleways' ? routes : places
   const hasDemo = [...cycleways, ...parking].some(x => x.is_demo)
   return <>
     <a className="skip-link" href="#main">Saltar al contenido</a>
     <header className="topbar"><a href="/" className="brand"><Bike size={30} strokeWidth={2} />CicloLima</a>
-      <span className="brand-note">Tu ciudad, en bicicleta.</span><a className="text-link" href="https://github.com/JosephChomboM/caso-ciclistas-pfc3" target="_blank" rel="noreferrer">Sobre el proyecto <ArrowUpRight size={15} /></a>
+      <span className="brand-note">Tu ciudad, en bicicleta.</span><nav className="account-nav" aria-label="Cuenta"><button onClick={() => setPanel(user ? 'report' : 'account')}>Reportar incidencia</button>{user?.role === 'moderator' && <button onClick={() => setPanel('moderation')}>Moderar</button>}<button onClick={() => setPanel('account')}>{user?.alias || 'Ingresar'}</button></nav>
     </header>
     <main id="main">
       <section className="intro"><div><h1>Encuentra tu próximo recorrido.</h1><p>Explora ciclovías y lugares para dejar tu bici. Consulta la información antes de salir.</p></div>
         <div className="city-label"><MapPin size={18} /> Lima, Perú</div>
       </section>
       {hasDemo && <p className="demo-note">Estás explorando datos de demostración. Los trazados y ubicaciones son ilustrativos y no acreditan condiciones reales.</p>}
+      {notice && <p role="status" className="notice">{notice}</p>}
+      {panel && <div className="panel-wrap"><button onClick={() => setPanel(null)}>Volver al mapa</button>
+        {panel === 'account' ? <Account user={user} onUser={value => { setUser(value); if (!user && value) setPanel(null) }} /> : panel === 'report' && user ? <ReportForm cycleways={cycleways} /> : panel === 'moderation' && user?.role === 'moderator' ? <Moderation /> : <p>Inicia sesión para continuar.</p>}
+      </div>}
+      <div hidden={panel !== null}>
       <div className="workspace">
         <section className="explorer" aria-label="Explorar lugares">
           <nav className="tabs" aria-label="Tipo de consulta">
@@ -51,17 +82,19 @@ export default function App() {
               {view === 'cycleways' && <label>Condición<select value={condition} onChange={e => setCondition(e.target.value)}><option value="">Todas</option><option>Sin verificar</option></select></label>}
             </div>
           </div>
+          {view === 'parking' && user && <label className="favorite-filter"><input type="checkbox" checked={onlyFavorites} onChange={e => setOnlyFavorites(e.target.checked)} />Solo mis favoritos</label>}
           <div className="result-heading"><h2>{view === 'cycleways' ? 'Ciclovías' : 'Estacionamientos'}</h2><span>{rows.length} resultados</span></div>
           {loading ? <p role="status" className="state">Cargando lugares…</p> : error ? <div role="alert" className="state"><p>{error}</p><button onClick={() => setAttempt(x => x + 1)}>Reintentar</button></div> : rows.length === 0 ? <div className="state"><h3>No encontramos coincidencias</h3><p>Prueba otro distrito o borra los filtros.</p><button onClick={() => { setDistrict(''); setCondition(''); setQuery('') }}>Limpiar filtros</button></div> :
             <ul className="results">{rows.map(row => <li key={row.id} className={selected === row.id ? 'selected' : ''}>
               <button className="result-button" onClick={() => setSelected(row.id)} aria-expanded={selected === row.id}>
                 <span className="result-icon">{view === 'cycleways' ? <Route size={21} /> : <ParkingSquare size={21} />}</span><span><strong>{row.name}</strong><small>{row.district}{'length_km' in row ? ` · ${row.length_km.toLocaleString('es-PE')} km` : ' · Estacionamiento'}</small></span><ArrowUpRight size={18} />
               </button>
-              {selected === row.id && <div className="detail"><p>{'condition' in row ? `Condición: ${row.condition}. Sin información suficiente para asegurar la seguridad del recorrido.` : `${row.address}. Horario: ${row.hours}. Sujeción: ${row.rack_type}.`}</p><p className="source">{row.source}<br />Actualizado: {new Date(row.updated_at).toLocaleDateString('es-PE')}</p></div>}
+              {selected === row.id && <div className="detail"><p>{'condition' in row ? `Condición: ${row.condition}. Sin información suficiente para asegurar la seguridad del recorrido.` : `${row.address}. Horario: ${row.hours}. Sujeción: ${row.rack_type}.`}</p><p className="source">{row.source}<br />Actualizado: {new Date(row.updated_at).toLocaleDateString('es-PE')}</p>{'condition' in row ? <ReportsList cyclewayId={row.id} /> : <button className="favorite-button" disabled={favoriteBusy} onClick={() => favorite(row.id)}>{favorites.some(x => x.id === row.id) ? 'Quitar de favoritos' : 'Guardar en favoritos'}</button>}</div>}
             </li>)}</ul>}
           <p className="list-foot">La ausencia de reportes no significa que un tramo sea seguro.</p>
         </section>
         <MapCanvas cycleways={view === 'cycleways' ? routes : []} parking={view === 'parking' ? places : []} selected={selected} onSelect={select} />
+      </div>
       </div>
     </main>
     <footer><span>CicloLima · Proyecto académico</span><span>Consulta. Planifica. Pedalea.</span></footer>
