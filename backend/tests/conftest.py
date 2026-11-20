@@ -1,6 +1,7 @@
 import os
+import secrets
 
-os.environ.setdefault("JWT_SECRET", "unit-test-secret-value-not-for-production-12345")
+os.environ.setdefault("JWT_SECRET", secrets.token_hex(32))
 os.environ.setdefault("DATABASE_URL", "sqlite://")
 
 import pytest  # noqa: E402

@@ -1,0 +1,43 @@
+# Crear los recursos dos veces: entorno test y production con bases distintas.
+# El cambio de environment en GitHub no crea ni protege ambientes por sí mismo.
+services:
+  - type: web
+    name: ciclolima-api-test
+    runtime: docker
+    plan: free
+    branch: test
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    autoDeployTrigger: off
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+  - type: web
+    name: ciclolima-web-test
+    runtime: static
+    branch: test
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    autoDeployTrigger: off
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

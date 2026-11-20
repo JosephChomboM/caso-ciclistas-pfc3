@@ -15,3 +15,4 @@
 .DS_Store
 .impeccable/review/
 outputs/
+frontend/public/version.json

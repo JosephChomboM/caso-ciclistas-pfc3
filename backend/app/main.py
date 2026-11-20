@@ -1,3 +1,5 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
@@ -24,13 +26,13 @@ app.include_router(reports_router)
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "commit": os.getenv("RENDER_GIT_COMMIT", "development")}
 
 
 @app.get("/ready")
 def ready(db: Db):
-    db.execute(text("SELECT 1"))
-    return {"status": "ready"}
+    db.execute(text("SELECT 1 FROM users LIMIT 1"))
+    return {"status": "ready", "commit": os.getenv("RENDER_GIT_COMMIT", "development")}
 
 
 @app.middleware("http")
