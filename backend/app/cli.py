@@ -76,11 +76,17 @@ def main():
     parser = argparse.ArgumentParser(description="Operaciones de CicloLima")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("seed-demo")
+    sub.add_parser("seed-showcase")
     promote = sub.add_parser("promote-moderator")
     promote.add_argument("email")
     args = parser.parse_args()
     if args.command == "seed-demo":
         seed_demo()
+    elif args.command == "seed-showcase":
+        from app.showcase import seed_showcase
+
+        with SessionLocal() as db:
+            print(seed_showcase(db))
     else:
         with SessionLocal() as db:
             user = db.scalar(select(User).where(User.email == args.email.lower()))
