@@ -5,6 +5,7 @@ from sqlalchemy import text
 from app.core.config import get_settings
 from app.modules.cycleways.router import router as cycleways_router
 from app.modules.parking.router import router as parking_router
+from app.modules.reports.router import router as reports_router
 from app.modules.users.router import router as users_router
 from app.modules.users.service import Db
 
@@ -18,6 +19,7 @@ app.add_middleware(
 app.include_router(users_router)
 app.include_router(cycleways_router)
 app.include_router(parking_router)
+app.include_router(reports_router)
 
 
 @app.get("/health")
