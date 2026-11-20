@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.core.config import get_settings
+from app.modules.cycleways.router import router as cycleways_router
+from app.modules.parking.router import router as parking_router
 from app.modules.users.router import router as users_router
 from app.modules.users.service import Db
 
@@ -14,6 +16,8 @@ app.add_middleware(
     allow_headers=["Content-Type", "Authorization"],
 )
 app.include_router(users_router)
+app.include_router(cycleways_router)
+app.include_router(parking_router)
 
 
 @app.get("/health")
