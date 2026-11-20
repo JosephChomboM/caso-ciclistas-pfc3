@@ -1,11 +1,11 @@
-# Crear los recursos dos veces: entorno test y production con bases distintas.
+# Stage usa main después de pasar los controles. Producción tiene un plan separado.
 # El cambio de environment en GitHub no crea ni protege ambientes por sí mismo.
 services:
   - type: web
     name: ciclolima-api-test
     runtime: docker
     plan: free
-    branch: test
+    branch: main
     rootDir: backend
     dockerfilePath: ./Dockerfile
     autoDeployTrigger: off
@@ -22,7 +22,7 @@ services:
   - type: web
     name: ciclolima-web-test
     runtime: static
-    branch: test
+    branch: main
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist
