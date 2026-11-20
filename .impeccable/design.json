@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-20T02:55:30.442684+00:00",
+  "title": "Design System: CicloLima",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "map-legend",
+        "value": "0 4px 16px #173c3118",
+        "purpose": "Sombra de la leyenda flotante del mapa."
+      }
+    ],
+    "motion": [
+      {
+        "name": "result-icon",
+        "value": "background 0.18s ease-out",
+        "purpose": "Cambio de fondo solo bajo prefers-reduced-motion: no-preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón estándar",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Acciones secundarias, retorno y reintento.",
+      "html": "<button class=\"ds-button\">Volver al mapa</button>",
+      "css": ".ds-button{font:inherit;border:1px solid var(--line,#dce5dd);border-radius:8px;background:white;color:var(--green,#164c3d);padding:10px 14px;cursor:pointer}.ds-button:hover{background:#eaf0e9}.ds-button:focus-visible{outline:3px solid #a04320;outline-offset:3px}.ds-button:disabled{cursor:wait;opacity:.6}"
+    },
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal de formulario.",
+      "html": "<button class=\"ds-primary\">Ingresar</button>",
+      "css": ".ds-primary{font:inherit;border:0;border-radius:8px;background:#164c3d;color:white;padding:10px 14px;min-height:46px;cursor:pointer}.ds-primary:hover{background:#22664f}.ds-primary:focus-visible{outline:3px solid #a04320;outline-offset:3px}.ds-primary:disabled{cursor:wait;opacity:.6}"
+    },
+    {
+      "name": "Campo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulario con foco compartido.",
+      "html": "<input class=\"ds-input\" aria-label=\"Alias\" placeholder=\"Tu alias\">",
+      "css": ".ds-input{font:inherit;width:100%;min-height:44px;background:white;border:1px solid #a2b5a8;border-radius:7px;color:#173c31;padding:10px;caret-color:#164c3d}.ds-input::placeholder{color:#65766d}.ds-input:focus-visible{outline:3px solid #a04320;outline-offset:3px}"
+    },
+    {
+      "name": "Pestañas de consulta",
+      "kind": "nav",
+      "refersTo": "tab-selected",
+      "description": "Selección de ciclovías o estacionamientos.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Tipo de consulta\"><button aria-pressed=\"true\">Ciclovías</button><button aria-pressed=\"false\">Estacionamientos</button></nav>",
+      "css": ".ds-tabs{display:flex;gap:4px;padding:12px;border-bottom:1px solid var(--line,#dce5dd)}.ds-tabs button{font:inherit;flex:1;padding:11px 5px;font-size:12px;border:0;border-radius:8px;background:white;color:var(--green,#164c3d);cursor:pointer}.ds-tabs button:hover{background:#eaf0e9}.ds-tabs button[aria-pressed=\"true\"]{background:#e4eddd;color:#24583d;font-weight:700}.ds-tabs button:focus-visible{outline:3px solid #a04320;outline-offset:3px}"
+    },
+    {
+      "name": "Fila de resultado",
+      "kind": "card",
+      "refersTo": "result-row",
+      "description": "Fila seleccionada con nombre, distrito y detalle de procedencia.",
+      "html": "<article class=\"ds-result\"><button aria-expanded=\"true\"><span><strong>Recorrido de demostración</strong><small>Miraflores · 2 km</small></span></button><div class=\"ds-detail\"><p>Condición: Sin verificar.</p><p class=\"ds-source\">Datos de demostración</p></div></article>",
+      "css": ".ds-result{border-top:1px solid var(--line,#dce5dd);background:#edf4e9;color:#173c31}.ds-result button{font:inherit;width:100%;border:0;border-radius:0;padding:17px 20px;display:flex;gap:12px;text-align:left;align-items:center;background:transparent;color:var(--green,#164c3d);cursor:pointer}.ds-result button:focus-visible{outline:3px solid #a04320;outline-offset:3px}.ds-result strong{font-size:13px;display:block;line-height:1.5;overflow-wrap:anywhere}.ds-result small{font-size:11px;color:var(--muted,#526b61);display:block;margin-top:5px}.ds-detail{padding:0 20px 16px;font-size:12px}.ds-detail p{line-height:1.6}.ds-source{font-size:10px;color:var(--muted,#526b61);margin:0}"
+    },
+    {
+      "name": "Aviso de demostración",
+      "kind": "custom",
+      "refersTo": "demo-notice",
+      "description": "Identifica el alcance ilustrativo de los datos.",
+      "html": "<p class=\"ds-demo\">Estás explorando datos de demostración. Los trazados y ubicaciones son ilustrativos y no acreditan condiciones reales.</p>",
+      "css": ".ds-demo{font-size:12px;line-height:1.6;color:#605322;background:#f3edce;padding:12px 16px;border-radius:7px;margin-bottom:22px}@media(max-width:760px){.ds-demo{line-height:1.5}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Señalización de parques urbanos de Lima",
+    "overview": "Verde profundo, superficies claras y Public Sans. Controles compactos y metadatos secundarios sostienen una consulta funcional, con selección entre lista y mapa. Documentación del código implementado, sin comp aprobado ni rasters de producto.",
+    "keyCharacteristics": [
+      "Cabecera verde y área de trabajo blanca.",
+      "Jerarquía tipográfica de una sola familia.",
+      "Selección enlazada entre lista y mapa.",
+      "Procedencia y demostración visibles."
+    ],
+    "rules": [],
+    "dos": [
+      "Do conservar foco visible y semántica de selección.",
+      "Do mantener mapa arriba en móvil.",
+      "Do mostrar procedencia, fecha y atribución."
+    ],
+    "donts": [
+      "Don’t presentar demostración como infraestructura validada.",
+      "Don’t retirar la atribución de OpenStreetMap.",
+      "Don’t tratar esta documentación como comp aprobado."
+    ]
+  }
+}
