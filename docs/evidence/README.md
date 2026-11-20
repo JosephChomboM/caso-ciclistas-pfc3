@@ -72,3 +72,12 @@ Capturas de navegador de Jira, GitHub, Render, Supabase, producción y diagrams.
 `jira-execution.json` contiene el historial saneado utilizado por las figuras reproducibles. Incluye el cierre del sprint 4 y la comprobación del acceso del docente. Las imágenes `docs/figures/burndowns-simulados.png` son un escenario hipotético anterior y no sustituyen las curvas observadas.
 
 Las capturas del pipeline d0d0644 acreditan build, pruebas, seguridad y ambos despliegues. Las actualizaciones documentales posteriores no cambian los módulos de la aplicación. No se capturaron páginas de variables secretas ni credenciales de acceso.
+
+## Capturas aportadas por el estudiante
+
+- [usuario-pipeline.png](usuario-pipeline.png)
+- [usuario-commits.png](usuario-commits.png)
+- [usuario-ramas.png](usuario-ramas.png)
+- [usuario-burndown-puntos.png](usuario-burndown-puntos.png)
+- [usuario-epicas.png](usuario-epicas.png)
+- [usuario-historia-pcc16.png](usuario-historia-pcc16.png)
