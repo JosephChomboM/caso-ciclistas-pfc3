@@ -14,7 +14,7 @@ Monolito modular en capas, siguiendo la organización de Ayni: React y TypeScrip
 
 ## Estrategia de ramas
 
-`main` contiene versiones revisadas; `test` integra el trabajo para pruebas; las ramas `codex/…` agrupan cambios revisables. Los PR enlazan las historias PCC correspondientes y deben pasar pruebas y controles de seguridad. El nombre de una rama no determina la autoría de sus commits.
+`main` contiene versiones revisadas; `test` integra el trabajo para pruebas; las ramas `joseph/…` agrupan cambios revisables. Los PR enlazan las historias PCC correspondientes y deben pasar pruebas y controles de seguridad. Los commits usan la identidad de Joseph, sin coautorías automáticas.
 
 ## Entrega
 
