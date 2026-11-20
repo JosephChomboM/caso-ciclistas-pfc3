@@ -31,4 +31,4 @@ Los ambientes usan bases independientes y el esquema privado `ciclolima`. Los co
 
 Las sugerencias son reglas explicables, no un modelo entrenado ni una certificación de seguridad vial. Billing es simulado. Para revertir billing en backend se deben revisar primero los datos persistentes y su migración; una reversión visual no justifica borrar tablas.
 
-Las capturas e historial Scrum están en `docs/evidence/`. El informe final, ZIP y preparación de entrega permanecen pendientes por solicitud del usuario.
+Las capturas e historial Scrum están en `docs/evidence/`. La entrega final incluye el informe actualizado, ZIP de código, diagramas draw.io y capturas originales. El cierre del sprint 4 y el acceso del docente se comprobaron el 20 de noviembre de 2026.

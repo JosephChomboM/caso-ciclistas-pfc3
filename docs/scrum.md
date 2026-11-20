@@ -4,8 +4,8 @@ El proyecto [PCC](https://josephchombo.atlassian.net/jira/software/projects/PCC/
 
 | Épica | Historias | Puntos |
 |---|---|---|
-| PCC-1 Usuarios y acceso | PCC-5 registro, PCC-6 sesión, PCC-7 perfil | 13 |
-| PCC-2 Consulta de ciclovías | PCC-8 mapa, PCC-9 filtros, PCC-10 detalle | 13 |
+| PCC-1 Usuarios y acceso | PCC-5 registro, PCC-6 sesión, PCC-7 perfil, PCC-18 footer, PCC-20 billing | 17 |
+| PCC-2 Consulta de ciclovías | PCC-8 mapa, PCC-9 filtros, PCC-10 detalle, PCC-17 catálogo, PCC-19 sugerencias | 16 |
 | PCC-3 Incidencias ciudadanas | PCC-11 reporte, PCC-12 consulta, PCC-13 moderación | 13 |
 | PCC-4 Estacionamientos | PCC-14 consulta, PCC-15 detalle, PCC-16 favoritos | 13 |
 
@@ -28,14 +28,14 @@ Las fechas de la tabla anterior son el calendario propuesto del Gantt. En Jira l
 
 El sprint 4 incorporó mejoras: PCC-17 catálogo (1 SP), PCC-18 footer (1 SP), PCC-19 sugerencias (2 SP), PCC-20 billing demo (3 SP). Tras definir ese alcance y estimaciones, su línea base se replanificó a 7 SP. Ventana actual: 19/11/2026 23:09–20/11/2026 00:09, America/Lima. Los cierres reales de las cuatro mejoras generan 7 → 6 → 5 → 3 → 0. No se borraron ni retrocedieron transiciones. Esta replanificación no debe presentarse como la planificación original.
 
-PCC-7, PCC-15 y PCC-16 ya estaban Done antes de esa ventana: Jira los muestra como completados fuera del sprint. Sus 13 SP no se cuentan otra vez en la velocidad actual. El sprint 4 permanece activo para mostrar el tablero, por solicitud del usuario.
+PCC-7, PCC-15 y PCC-16 ya estaban Done antes de esa ventana: Jira los muestra como completados fuera del sprint. Sus 13 SP no se cuentan otra vez en la velocidad actual. El sprint 4 se cerró el 20/11/2026 a las 00:40 (America/Lima), tras capturar sus tarjetas y límites WIP. Su cierre administrativo fue posterior al final planificado de las 00:09; todas las mejoras estaban Done desde las 23:49 del día anterior.
 
 | Sprint | Estado | SP aceptados en su ventana actual |
 |---|---|---|
 | 1 | Cerrado | 13 |
 | 2 | Cerrado | 13 |
 | 3 | Cerrado | 13 |
-| 4 | Activo | 7; velocidad provisional hasta cerrar |
+| 4 | Cerrado | 7 |
 
 La exportación [jira-execution.json](evidence/jira-execution.json) contiene ventanas, estados, puntos, dependencias e historial, sin credenciales ni identificadores de cuenta. `scripts/generate_execution_figures.py` genera burndowns de historias ideal/observado y velocidad a partir de ella. Excluye historias ya Done al inicio y conserva los tiempos reales. No reparte cierres artificialmente.
 
