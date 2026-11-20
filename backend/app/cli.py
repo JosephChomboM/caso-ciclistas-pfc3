@@ -77,6 +77,7 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("seed-demo")
     sub.add_parser("seed-showcase")
+    sub.add_parser("seed-billing-demo")
     promote = sub.add_parser("promote-moderator")
     promote.add_argument("email")
     args = parser.parse_args()
@@ -87,6 +88,19 @@ def main():
 
         with SessionLocal() as db:
             print(seed_showcase(db))
+    elif args.command == "seed-billing-demo":
+        from app.modules.billing import service as billing
+
+        with SessionLocal() as db:
+            count = 0
+            for name in ["ana", "diego", "lucia", "moderacion"]:
+                user = db.scalar(
+                    select(User).where(User.email == f"ciclolima-demo-{name}@example.com")
+                )
+                if user and billing.subscription(db, user.id).updated_at is None:
+                    billing.change_plan(db, user.id, "plus" if name in {"ana", "diego"} else "free")
+                    count += 1
+        print(f"Se inicializaron {count} suscripciones sintéticas; no se realizaron cobros.")
     else:
         with SessionLocal() as db:
             user = db.scalar(select(User).where(User.email == args.email.lower()))
