@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { api, type Cycleway, type Report } from "../api/client";
+import { dateInLima } from "../lib/time";
 
 export function ReportForm({ cycleways }: { cycleways: Cycleway[] }) {
   const [selected, setSelected] = useState(String(cycleways[0]?.id || ""));
@@ -149,10 +150,7 @@ export function ReportsList({ cyclewayId }: { cyclewayId: number }) {
           <article key={x.id}>
             <strong>{x.category}</strong>
             <p>{x.description}</p>
-            <small>
-              {new Date(x.created_at).toLocaleDateString("es-PE")} · Aporte
-              ciudadano
-            </small>
+            <small>{dateInLima(x.created_at)} · Aporte ciudadano</small>
           </article>
         ))
       ) : (

@@ -12,11 +12,16 @@ import Account from "./components/Account";
 import { Moderation, ReportForm, ReportsList } from "./components/Reports";
 import MapCanvas from "./components/MapCanvas";
 import Recommendations from "./components/Recommendations";
+import Billing from "./components/Billing";
+import { dateInLima } from "./lib/time";
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
+  const [afterLogin, setAfterLogin] = useState<"billing" | "report" | null>(
+    null,
+  );
   const [panel, setPanel] = useState<
-    "account" | "report" | "moderation" | "recommendations" | null
+    "account" | "report" | "moderation" | "recommendations" | "billing" | null
   >(null);
   const [favorites, setFavorites] = useState<Parking[]>([]);
   const [onlyFavorites, setOnlyFavorites] = useState(false);
@@ -119,16 +124,27 @@ export default function App() {
         </a>
         <span className="brand-note">Tu ciudad, en bicicleta.</span>
         <nav className="account-nav" aria-label="Cuenta">
-          <button onClick={() => setPanel(user ? "report" : "account")}>
+          <button
+            onClick={() => {
+              setAfterLogin(user ? null : "report");
+              setPanel(user ? "report" : "account");
+            }}
+          >
             Reportar incidencia
           </button>
           <button onClick={() => setPanel("recommendations")}>
             Sugerencias
           </button>
+          <button onClick={() => setPanel("billing")}>Planes</button>
           {user?.role === "moderator" && (
             <button onClick={() => setPanel("moderation")}>Moderar</button>
           )}
-          <button onClick={() => setPanel("account")}>
+          <button
+            onClick={() => {
+              setAfterLogin(null);
+              setPanel("account");
+            }}
+          >
             {user?.alias || "Ingresar"}
           </button>
         </nav>
@@ -154,7 +170,15 @@ export default function App() {
         {panel && (
           <div className="panel-wrap">
             <button onClick={() => setPanel(null)}>Volver al mapa</button>
-            {panel === "recommendations" ? (
+            {panel === "billing" ? (
+              <Billing
+                user={user}
+                onLogin={() => {
+                  setAfterLogin("billing");
+                  setPanel("account");
+                }}
+              />
+            ) : panel === "recommendations" ? (
               <Recommendations
                 districts={[
                   ...new Set(cycleways.map((x) => x.district)),
@@ -173,7 +197,10 @@ export default function App() {
                 user={user}
                 onUser={(value) => {
                   setUser(value);
-                  if (!user && value) setPanel(null);
+                  if (!user && value) {
+                    setPanel(afterLogin);
+                    setAfterLogin(null);
+                  }
                 }}
               />
             ) : panel === "report" && user ? (
@@ -342,10 +369,7 @@ export default function App() {
                           <p className="source">
                             {row.source}
                             <br />
-                            Actualizado:{" "}
-                            {new Date(row.updated_at).toLocaleDateString(
-                              "es-PE",
-                            )}
+                            Actualizado: {dateInLima(row.updated_at)}
                           </p>
                           {"condition" in row ? (
                             <ReportsList cyclewayId={row.id} />
@@ -381,14 +405,29 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <div>
-          <a href="#main" className="footer-brand">
+          <a
+            href="#main"
+            className="footer-brand"
+            onClick={() => setPanel(null)}
+          >
             <Bike size={24} /> CicloLima
           </a>
           <p>Conoce los recorridos. Comparte lo que encuentras.</p>
           <small>Proyecto académico de Joseph Chombo Morocho.</small>
         </div>
         <nav aria-label="Enlaces del proyecto">
-          <a href="#main">Explorar el mapa</a>
+          <button
+            className="footer-action"
+            onClick={() => {
+              setPanel("billing");
+              window.scrollTo({ top: 0, behavior: "auto" });
+            }}
+          >
+            Planes de demostración
+          </button>
+          <a href="#main" onClick={() => setPanel(null)}>
+            Explorar el mapa
+          </a>
           <a
             href="https://github.com/JosephChomboM/caso-ciclistas-pfc3"
             target="_blank"

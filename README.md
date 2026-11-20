@@ -7,6 +7,7 @@ Aplicación académica para consultar ciclovías de Lima, registrar incidencias 
 - [Backlog y sprints en Jira](https://josephchombo.atlassian.net/jira/software/projects/PCC/boards/34/backlog)
 - [Cronograma en Jira](https://josephchombo.atlassian.net/jira/software/projects/PCC/boards/34/timeline)
 - [Repositorio](https://github.com/JosephChomboM/caso-ciclistas-pfc3)
+- [Aplicación en producción](https://ciclolima-web-production-ay79.onrender.com)
 
 ## Arquitectura
 
@@ -68,6 +69,14 @@ npm run build
 ```
 
 No hay contraseñas predeterminadas. Registra una cuenta desde la aplicación. Para habilitar moderación, un operador con acceso a la base ejecuta `uv run python -m app.cli promote-moderator correo@example.com` en el entorno correspondiente. El usuario debe volver a iniciar sesión.
+
+## Funcionalidades adicionales
+
+- Sugerencias por distrito y distancia objetivo, con razones explícitas y selección del tramo en el mapa. Su afinidad no es una garantía de seguridad.
+- Planes de demostración con suscripción persistida, comprobantes privados y exportación CSV de favoritos con Plus. No hay cobros ni tarjetas.
+- Footer con navegación al mapa, planes y GitHub de Joseph; la fuente académica se consulta en cada lugar y en Datos y alcance.
+
+`uv run python -m app.cli seed-showcase` amplía los datos académicos sin duplicarlos. Después de migrar, `uv run python -m app.cli seed-billing-demo` inicializa únicamente suscripciones sintéticas faltantes. Las tablas están en el esquema privado **ciclolima** de Supabase, no en public. Ver [datos](docs/showcase.md), [sugerencias](docs/recommendations.md) y [billing](docs/billing.md).
 
 ## Entornos de pruebas
 

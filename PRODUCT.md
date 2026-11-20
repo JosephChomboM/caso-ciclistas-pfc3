@@ -20,7 +20,7 @@ Hacer consultable la información de ciclovías, incidencias y estacionamientos,
 
 ## Capabilities and Constraints
 
-Registro y acceso, mapa, filtros, detalles, reportes moderados, perfil y favoritos. La pantalla principal es mapa y lista, confirmada por el usuario. No se afirma que una ruta sea segura ni se calcula navegación entre origen y destino. No hay captura continua de ubicación.
+Registro y acceso, mapa, filtros, detalles, reportes moderados, perfil y favoritos. La pantalla principal conserva mapa y lista. El recomendador compara distancia y reportes publicados con razones explícitas. Billing permite probar planes, comprobantes simulados y exportación privada de favoritos; no realiza cobros ni recopila tarjetas. El footer enlaza el GitHub de Joseph. No se afirma que una ruta sea segura ni se calcula navegación entre origen y destino. No hay captura continua de ubicación.
 
 ## Evidence on Hand
 
@@ -35,4 +35,4 @@ Enunciado académico y backlog PCC. No se dispone de una base oficial de infraes
 
 ## Open decisions
 
-Proveedor y cuenta de despliegue, datos geográficos oficiales y fecha real de entrega. El cronograma de Jira es una propuesta de simulación.
+Render y Supabase están configurados en recursos exclusivos de CicloLima, separados por ambiente. Permanecen pendientes los datos geográficos oficiales y la fecha real de entrega. El Gantt es una planificación académica; Jira conserva eventos de una simulación comprimida. El usuario mantiene detenidos el ZIP y el material final de presentación.
