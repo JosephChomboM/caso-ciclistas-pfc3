@@ -1,6 +1,7 @@
 from alembic import context
 
 from app.core.db import Base, engine
+from app.modules.billing.models import Invoice, Subscription  # noqa: F401
 from app.modules.cycleways.models import Cycleway  # noqa: F401
 from app.modules.parking.models import Favorite, Parking  # noqa: F401
 from app.modules.reports.models import ModerationAction, Report  # noqa: F401
