@@ -1,6 +1,6 @@
 # Backlog y cuatro sprints
 
-El proyecto [PCC](https://josephchombo.atlassian.net/jira/software/projects/PCC/boards/34/backlog) contiene cuatro épicas y doce historias. La estimación inicial individual usa Fibonacci; las prioridades MoSCoW también figuran como etiquetas. Cada historia contiene criterios Dado/Cuando/Entonces, fechas y sprint.
+El proyecto [PCC](https://josephchombo.atlassian.net/jira/software/projects/PCC/boards/34/backlog) contiene cuatro épicas, 16 historias y cuatro hitos sin puntos. La base original suma 52 SP; las cuatro mejoras agregan 7 SP: 59 SP de alcance total. Las prioridades MoSCoW figuran como etiquetas. Cada historia contiene Como/quiero/para, criterios Dado/Cuando/Entonces, fechas y sprint.
 
 | Épica | Historias | Puntos |
 |---|---|---|
@@ -22,11 +22,28 @@ El calendario describe la simulación académica planificada; no acredita cuatro
 
 Aceptación comprobada; pruebas aprobadas; PR revisado; controles de seguridad satisfactorios; comprobación en el ambiente de pruebas y evidencia enlazada. Para trabajo individual se identifica la autorrevisión.
 
-## Simulación reproducible
+## Ejecución y replanificación
+
+Las fechas de la tabla anterior son el calendario propuesto del Gantt. En Jira las ventanas de ejecución se comprimieron a una hora. Los tres primeros sprints se completaron rápidamente sobre el MVP ya implementado; sus curvas conservan esos cierres concentrados. La reapertura para corregir sus ventanas modificó la fecha administrativa de cierre, conservando las transiciones originales.
+
+El sprint 4 incorporó mejoras: PCC-17 catálogo (1 SP), PCC-18 footer (1 SP), PCC-19 sugerencias (2 SP), PCC-20 billing demo (3 SP). Tras definir ese alcance y estimaciones, su línea base se replanificó a 7 SP. Ventana actual: 19/11/2026 23:09–20/11/2026 00:09, America/Lima. Los cierres reales de las cuatro mejoras generan 7 → 6 → 5 → 3 → 0. No se borraron ni retrocedieron transiciones. Esta replanificación no debe presentarse como la planificación original.
+
+PCC-7, PCC-15 y PCC-16 ya estaban Done antes de esa ventana: Jira los muestra como completados fuera del sprint. Sus 13 SP no se cuentan otra vez en la velocidad actual. El sprint 4 permanece activo para mostrar el tablero, por solicitud del usuario.
+
+| Sprint | Estado | SP aceptados en su ventana actual |
+|---|---|---|
+| 1 | Cerrado | 13 |
+| 2 | Cerrado | 13 |
+| 3 | Cerrado | 13 |
+| 4 | Activo | 7; velocidad provisional hasta cerrar |
+
+La exportación [jira-execution.json](evidence/jira-execution.json) contiene ventanas, estados, puntos, dependencias e historial, sin credenciales ni identificadores de cuenta. `scripts/generate_execution_figures.py` genera burndowns de historias ideal/observado y velocidad a partir de ella. Excluye historias ya Done al inicio y conserva los tiempos reales. No reparte cierres artificialmente.
+
+## Escenario de planificación original
 
 Los gráficos de `docs/figures/` se generan con `scripts/generate_planning_figures.py`. Sus series son un escenario académico explícito de cierre de historias, no una exportación del historial de Jira. Cada sprint parte de tres historias y trece puntos; solo se descuentan al aceptarse. La velocidad del escenario es 13 puntos por sprint. No se declara como velocidad real del proyecto.
 
-Al ejecutar los sprints en Jira, conservar capturas de inicio, avance y cierre y comparar el escenario con el historial real. No retroceder fechas ni inventar transiciones para obtener un burndown.
+Los gráficos observados y las capturas nativas de Jira son la evidencia de ejecución. Los escenarios hipotéticos anteriores no deben usarse como prueba de trabajo real.
 
 ## Gantt y dependencias
 
@@ -58,4 +75,6 @@ gantt
   Entrega :milestone, 2026-12-18, 0d
 ```
 
-Además de las flechas temporales, reportar requiere sesión y mapa; moderar requiere reporte; consultar reportes depende de su publicación; favoritos requiere sesión y estacionamiento. Estas dependencias deben conservarse al ajustar el calendario de entrega.
+En Timeline de Jira, usar Weeks, expandir las épicas, activar Dependencies y alinear las barras con **Work item start/end dates**. Alinear por sprints comprime las barras en un día. Las historias tienen inicio/vencimiento y enlaces Blocks: registro → sesión → perfil; mapa → filtros/detalle; sesión y detalle → reporte → moderación → consulta; sesión y estacionamientos → favoritos; catálogo → sugerencias; sesión y favoritos → billing.
+
+Las mejoras PCC-17/18/19/20 están planificadas para 30/11–01/12, 18/12, 14–16/12 y 17–18/12 respectivamente. Son fechas propuestas, no fechas de ejecución real. Los hitos PCC-21/22/23/24 corresponden a 27/11, 04/12, 11/12 y 18/12; son tareas sin SP ni sprint para no añadir alcance al burndown. H4 exige verificar el MVP ampliado en producción.

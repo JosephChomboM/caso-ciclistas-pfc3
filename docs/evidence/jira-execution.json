@@ -1,0 +1,933 @@
+{
+  "kind": "academic_simulation_real_jira_events",
+  "timezone": "America/Lima",
+  "generated_at": "2026-11-20 04:54:12 UTC",
+  "source": "https://josephchombo.atlassian.net/jira/software/projects/PCC/boards/34",
+  "note": "Los sprints usan ventanas comprimidas. El sprint 4 fue replanificado a 7 SP; las tres historias originales ya estaban Done antes de su ventana actual. Los hitos no tienen SP ni sprint. El Gantt expresa planificación, no semanas ejecutadas.",
+  "sprints": [
+    {
+      "sprint": {
+        "id": 36,
+        "name": "PCC Sprint 1 · Acceso y mapa",
+        "state": "closed",
+        "goal": "Habilitar registro, sesión y mapa: PCC-5 (3 SP), PCC-6 (5 SP), PCC-8 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas.",
+        "startDate": "2026-11-20T03:20:37.000Z",
+        "endDate": "2026-11-20T04:20:37.000Z",
+        "completeDate": "2026-11-20T03:54:33.506Z",
+        "originBoardId": 34
+      },
+      "issue_keys": [
+        "PCC-8",
+        "PCC-6",
+        "PCC-5"
+      ]
+    },
+    {
+      "sprint": {
+        "id": 37,
+        "name": "PCC Sprint 2 · Consulta y aportes",
+        "state": "closed",
+        "goal": "Consultar tramos y recibir incidencias: PCC-9 (3 SP), PCC-10 (5 SP), PCC-11 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas.",
+        "startDate": "2026-11-20T03:22:56.000Z",
+        "endDate": "2026-11-20T04:22:56.000Z",
+        "completeDate": "2026-11-20T03:53:42.911Z",
+        "originBoardId": 34
+      },
+      "issue_keys": [
+        "PCC-11",
+        "PCC-9",
+        "PCC-10"
+      ]
+    },
+    {
+      "sprint": {
+        "id": 38,
+        "name": "PCC Sprint 3 · Moderación y estacionamientos",
+        "state": "closed",
+        "goal": "Moderar reportes y consultar estacionamientos: PCC-12 (3 SP), PCC-13 (5 SP), PCC-14 (5 SP). Simulación académica de 1 hora, finalizada anticipadamente con 3 historias y 13 SP aceptados. Fechas ajustadas a la ventana de demostración; transiciones originales conservadas.",
+        "startDate": "2026-11-20T03:25:46.000Z",
+        "endDate": "2026-11-20T04:25:46.000Z",
+        "completeDate": "2026-11-20T03:52:38.729Z",
+        "originBoardId": 34
+      },
+      "issue_keys": [
+        "PCC-14",
+        "PCC-12",
+        "PCC-13"
+      ]
+    },
+    {
+      "sprint": {
+        "id": 39,
+        "name": "PCC Sprint 4 · Preferencias y mejoras",
+        "state": "active",
+        "goal": "Validar datos, footer, sugerencias y billing demo. Backlog replanificado: PCC-17 (1), PCC-18 (1), PCC-19 (2) y PCC-20 (3): 7 SP. Ventana de 1 hora; cada cierre exige pruebas y stage. Los 13 SP anteriores son trabajo previo. Se conservan todas las transiciones.",
+        "startDate": "2026-11-20T04:09:00.000Z",
+        "endDate": "2026-11-20T05:09:00.000Z",
+        "originBoardId": 34
+      },
+      "issue_keys": [
+        "PCC-17",
+        "PCC-15",
+        "PCC-20",
+        "PCC-19",
+        "PCC-18",
+        "PCC-16",
+        "PCC-7"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "key": "PCC-1",
+      "title": "Usuarios y acceso",
+      "type": "Epic",
+      "status": "Done",
+      "parent": null,
+      "points": 0,
+      "start": "2026-11-23",
+      "end": "2026-12-18"
+    },
+    {
+      "key": "PCC-2",
+      "title": "Consulta de ciclovías",
+      "type": "Epic",
+      "status": "Done",
+      "parent": null,
+      "points": 0,
+      "start": "2026-11-23",
+      "end": "2026-12-16"
+    },
+    {
+      "key": "PCC-3",
+      "title": "Incidencias ciudadanas",
+      "type": "Epic",
+      "status": "Done",
+      "parent": null,
+      "points": 0,
+      "start": "2026-12-03",
+      "end": "2026-12-11"
+    },
+    {
+      "key": "PCC-4",
+      "title": "Estacionamientos para bicicletas",
+      "type": "Epic",
+      "status": "Done",
+      "parent": null,
+      "points": 0,
+      "start": "2026-12-07",
+      "end": "2026-12-18"
+    },
+    {
+      "key": "PCC-5",
+      "title": "HU01 Registro de ciclista",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 3,
+      "start": "2026-11-23",
+      "end": "2026-11-24"
+    },
+    {
+      "key": "PCC-6",
+      "title": "HU02 Inicio de sesión",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 5,
+      "start": "2026-11-25",
+      "end": "2026-11-27"
+    },
+    {
+      "key": "PCC-7",
+      "title": "HU03 Perfil y preferencias",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 5,
+      "start": "2026-12-14",
+      "end": "2026-12-16"
+    },
+    {
+      "key": "PCC-8",
+      "title": "HU04 Mapa de ciclovías",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-2",
+      "points": 5,
+      "start": "2026-11-23",
+      "end": "2026-11-27"
+    },
+    {
+      "key": "PCC-9",
+      "title": "HU05 Filtros de consulta",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-2",
+      "points": 3,
+      "start": "2026-11-30",
+      "end": "2026-12-01"
+    },
+    {
+      "key": "PCC-10",
+      "title": "HU06 Detalle de tramo",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-2",
+      "points": 5,
+      "start": "2026-11-30",
+      "end": "2026-12-02"
+    },
+    {
+      "key": "PCC-11",
+      "title": "HU07 Registro de incidencia",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-3",
+      "points": 5,
+      "start": "2026-12-03",
+      "end": "2026-12-04"
+    },
+    {
+      "key": "PCC-12",
+      "title": "HU08 Consulta de reportes",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-3",
+      "points": 3,
+      "start": "2026-12-10",
+      "end": "2026-12-11"
+    },
+    {
+      "key": "PCC-13",
+      "title": "HU09 Moderación de reportes",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-3",
+      "points": 5,
+      "start": "2026-12-07",
+      "end": "2026-12-09"
+    },
+    {
+      "key": "PCC-14",
+      "title": "HU10 Consulta de estacionamientos",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-4",
+      "points": 5,
+      "start": "2026-12-07",
+      "end": "2026-12-09"
+    },
+    {
+      "key": "PCC-15",
+      "title": "HU11 Detalle de estacionamiento",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-4",
+      "points": 3,
+      "start": "2026-12-14",
+      "end": "2026-12-16"
+    },
+    {
+      "key": "PCC-16",
+      "title": "HU12 Estacionamientos favoritos",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-4",
+      "points": 5,
+      "start": "2026-12-17",
+      "end": "2026-12-18"
+    },
+    {
+      "key": "PCC-17",
+      "title": "HU13 Catálogo y comunidad de demostración",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-2",
+      "points": 1,
+      "start": "2026-11-30",
+      "end": "2026-12-01"
+    },
+    {
+      "key": "PCC-18",
+      "title": "HU14 Navegación y redes en el pie de página",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 1,
+      "start": "2026-12-18",
+      "end": "2026-12-18"
+    },
+    {
+      "key": "PCC-19",
+      "title": "HU15 Sugerencias explicables de recorridos",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-2",
+      "points": 2,
+      "start": "2026-12-14",
+      "end": "2026-12-16"
+    },
+    {
+      "key": "PCC-20",
+      "title": "HU16 Planes y suscripciones de demostración",
+      "type": "Story",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 3,
+      "start": "2026-12-17",
+      "end": "2026-12-18"
+    },
+    {
+      "key": "PCC-21",
+      "title": "Hito H1 Acceso y mapa disponibles",
+      "type": "Task",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 0,
+      "start": "2026-11-27",
+      "end": "2026-11-27"
+    },
+    {
+      "key": "PCC-22",
+      "title": "Hito H2 Consulta y registro de incidencias",
+      "type": "Task",
+      "status": "Done",
+      "parent": "PCC-3",
+      "points": 0,
+      "start": "2026-12-04",
+      "end": "2026-12-04"
+    },
+    {
+      "key": "PCC-23",
+      "title": "Hito H3 Moderación y estacionamientos disponibles",
+      "type": "Task",
+      "status": "Done",
+      "parent": "PCC-4",
+      "points": 0,
+      "start": "2026-12-11",
+      "end": "2026-12-11"
+    },
+    {
+      "key": "PCC-24",
+      "title": "Hito H4 MVP ampliado verificado en producción",
+      "type": "Task",
+      "status": "Done",
+      "parent": "PCC-1",
+      "points": 0,
+      "start": "2026-12-18",
+      "end": "2026-12-18"
+    }
+  ],
+  "histories": [
+    {
+      "key": "PCC-5",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:27.125-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 1 · Acceso y mapa"
+        },
+        {
+          "at": "2026-11-19T22:20:37.674-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:21:41.461-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:22:15.739-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-6",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:40.399-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 1 · Acceso y mapa"
+        },
+        {
+          "at": "2026-11-19T22:22:17.628-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:22:18.972-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:22:20.369-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-7",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:42.969-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T22:27:26.185-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:28:34.716-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:28:36.099-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-8",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:45.544-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 1 · Acceso y mapa"
+        },
+        {
+          "at": "2026-11-19T22:22:22.023-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:22:23.424-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:22:24.759-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-9",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:48.057-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 2 · Consulta y aportes"
+        },
+        {
+          "at": "2026-11-19T22:23:01.354-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:23:37.547-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:23:38.782-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-10",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:50.640-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 2 · Consulta y aportes"
+        },
+        {
+          "at": "2026-11-19T22:23:40.030-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:23:41.268-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:23:42.454-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-11",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:53.049-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 2 · Consulta y aportes"
+        },
+        {
+          "at": "2026-11-19T22:23:43.689-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:23:45.025-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:23:46.339-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-12",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:55.506-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 3 · Moderación y estacionamientos"
+        },
+        {
+          "at": "2026-11-19T22:26:28.632-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:26:29.839-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:26:31.108-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-13",
+      "events": [
+        {
+          "at": "2026-11-19T21:28:58.050-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 3 · Moderación y estacionamientos"
+        },
+        {
+          "at": "2026-11-19T22:25:51.401-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:26:26.043-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:26:27.387-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-14",
+      "events": [
+        {
+          "at": "2026-11-19T21:29:00.328-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 3 · Moderación y estacionamientos"
+        },
+        {
+          "at": "2026-11-19T22:26:32.391-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:26:33.708-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:26:35.309-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-15",
+      "events": [
+        {
+          "at": "2026-11-19T21:29:02.796-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T22:28:37.311-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:28:38.608-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:28:39.855-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-16",
+      "events": [
+        {
+          "at": "2026-11-19T21:29:05.323-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T22:28:41.078-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T22:28:42.336-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T22:28:43.562-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-17",
+      "events": [
+        {
+          "at": "2026-11-19T23:00:06.997-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T23:00:33.990-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T23:03:22.572-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T23:08:50.171-0500",
+          "field": "Story point estimate",
+          "from": "5",
+          "to": "1"
+        },
+        {
+          "at": "2026-11-19T23:09:29.378-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-18",
+      "events": [
+        {
+          "at": "2026-11-19T23:00:09.381-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T23:04:00.158-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T23:06:14.294-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T23:07:12.624-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "To Do"
+        },
+        {
+          "at": "2026-11-19T23:08:51.688-0500",
+          "field": "Story point estimate",
+          "from": "2",
+          "to": "1"
+        },
+        {
+          "at": "2026-11-19T23:09:30.593-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T23:15:27.419-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-19",
+      "events": [
+        {
+          "at": "2026-11-19T23:00:11.397-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T23:06:15.571-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T23:08:52.991-0500",
+          "field": "Story point estimate",
+          "from": "5",
+          "to": "2"
+        },
+        {
+          "at": "2026-11-19T23:15:55.315-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T23:32:18.934-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    },
+    {
+      "key": "PCC-20",
+      "events": [
+        {
+          "at": "2026-11-19T23:01:22.457-0500",
+          "field": "Sprint",
+          "from": "",
+          "to": "PCC Sprint 4 · Preferencias y entrega"
+        },
+        {
+          "at": "2026-11-19T23:08:54.294-0500",
+          "field": "Story point estimate",
+          "from": "8",
+          "to": "3"
+        },
+        {
+          "at": "2026-11-19T23:15:56.790-0500",
+          "field": "status",
+          "from": "To Do",
+          "to": "In Progress"
+        },
+        {
+          "at": "2026-11-19T23:46:32.848-0500",
+          "field": "status",
+          "from": "In Progress",
+          "to": "In Review"
+        },
+        {
+          "at": "2026-11-19T23:49:41.598-0500",
+          "field": "status",
+          "from": "In Review",
+          "to": "Done"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    [
+      "PCC-5",
+      "PCC-6"
+    ],
+    [
+      "PCC-6",
+      "PCC-7"
+    ],
+    [
+      "PCC-6",
+      "PCC-11"
+    ],
+    [
+      "PCC-6",
+      "PCC-16"
+    ],
+    [
+      "PCC-6",
+      "PCC-20"
+    ],
+    [
+      "PCC-6",
+      "PCC-21"
+    ],
+    [
+      "PCC-8",
+      "PCC-9"
+    ],
+    [
+      "PCC-8",
+      "PCC-10"
+    ],
+    [
+      "PCC-8",
+      "PCC-21"
+    ],
+    [
+      "PCC-9",
+      "PCC-22"
+    ],
+    [
+      "PCC-10",
+      "PCC-11"
+    ],
+    [
+      "PCC-11",
+      "PCC-13"
+    ],
+    [
+      "PCC-11",
+      "PCC-22"
+    ],
+    [
+      "PCC-13",
+      "PCC-12"
+    ],
+    [
+      "PCC-12",
+      "PCC-23"
+    ],
+    [
+      "PCC-14",
+      "PCC-15"
+    ],
+    [
+      "PCC-14",
+      "PCC-16"
+    ],
+    [
+      "PCC-14",
+      "PCC-23"
+    ],
+    [
+      "PCC-16",
+      "PCC-20"
+    ],
+    [
+      "PCC-17",
+      "PCC-19"
+    ],
+    [
+      "PCC-18",
+      "PCC-24"
+    ],
+    [
+      "PCC-19",
+      "PCC-24"
+    ],
+    [
+      "PCC-20",
+      "PCC-24"
+    ]
+  ],
+  "production_verification": {
+    "commit": "7b67304c7d026c103a0043783ce6cb97539e60fe",
+    "workflow_run": 44676252423,
+    "milestone": "PCC-24",
+    "milestone_completed_at": "2026-11-20T00:04:40.356-05:00",
+    "epic_completed_at": "2026-11-20T00:04:41.782-05:00",
+    "checks": [
+      "API ready and web version match commit",
+      "browser registration and logout",
+      "recommendation selected in map",
+      "Plus simulated invoice",
+      "own favorite CSV downloaded and parsed",
+      "synthetic report pending moderation"
+    ]
+  }
+}
