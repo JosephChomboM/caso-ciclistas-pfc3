@@ -106,7 +106,6 @@ export default function App() {
       x.name.toLowerCase().includes(query.toLowerCase()),
   );
   const rows = view === "cycleways" ? routes : places;
-  const hasDemo = [...cycleways, ...parking].some((x) => x.is_demo);
   return (
     <>
       <a className="skip-link" href="#main">
@@ -143,12 +142,6 @@ export default function App() {
             <MapPin size={18} /> Lima, Perú
           </div>
         </section>
-        {hasDemo && (
-          <p className="demo-note">
-            Estás explorando datos de demostración. Los trazados y ubicaciones
-            son ilustrativos y no acreditan condiciones reales.
-          </p>
-        )}
         {notice && (
           <p role="status" className="notice">
             {notice}
@@ -220,9 +213,15 @@ export default function App() {
                       }}
                     >
                       <option value="">Todos los distritos</option>
-                      {["Miraflores", "San Isidro", "Barranco"].map((x) => (
-                        <option key={x}>{x}</option>
-                      ))}
+                      {[
+                        ...new Set(
+                          [...cycleways, ...parking].map((x) => x.district),
+                        ),
+                      ]
+                        .sort()
+                        .map((x) => (
+                          <option key={x}>{x}</option>
+                        ))}
                     </select>
                   </label>
                   {view === "cycleways" && (
@@ -233,7 +232,11 @@ export default function App() {
                         onChange={(e) => setCondition(e.target.value)}
                       >
                         <option value="">Todas</option>
-                        <option>Sin verificar</option>
+                        {[...new Set(cycleways.map((x) => x.condition))]
+                          .sort()
+                          .map((x) => (
+                            <option key={x}>{x}</option>
+                          ))}
                       </select>
                     </label>
                   )}
@@ -358,9 +361,39 @@ export default function App() {
           </div>
         </div>
       </main>
-      <footer>
-        <span>CicloLima · Proyecto académico</span>
-        <span>Consulta. Planifica. Pedalea.</span>
+      <footer className="site-footer">
+        <div>
+          <a href="#main" className="footer-brand">
+            <Bike size={24} /> CicloLima
+          </a>
+          <p>Conoce los recorridos. Comparte lo que encuentras.</p>
+          <small>Proyecto académico de Joseph Chombo Morocho.</small>
+        </div>
+        <nav aria-label="Enlaces del proyecto">
+          <a href="#main">Explorar el mapa</a>
+          <a
+            href="https://github.com/JosephChomboM/caso-ciclistas-pfc3"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Código del proyecto <ArrowUpRight size={15} />
+          </a>
+          <a
+            href="https://github.com/JosephChomboM"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ArrowUpRight size={18} /> GitHub de Joseph
+          </a>
+        </nav>
+        <details>
+          <summary>Datos y alcance</summary>
+          <p>
+            El catálogo académico contiene ejemplos ilustrativos. Cada lugar
+            muestra su fuente y actualización. Las sugerencias no certifican
+            seguridad vial.
+          </p>
+        </details>
       </footer>
     </>
   );

@@ -599,6 +599,45 @@ footer {
 [hidden] {
   display: none !important;
 }
+.site-footer {
+  align-items: start;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--line);
+}
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.site-footer a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+.site-footer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.site-footer nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.site-footer details {
+  max-width: 32ch;
+}
+.site-footer summary {
+  cursor: pointer;
+}
+.site-footer p {
+  max-width: 46ch;
+  line-height: 1.6;
+}
 @media (max-width: 760px) {
   .account-nav {
     gap: 6px;
