@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.modules.reports.models import Report
@@ -15,3 +15,12 @@ def list_reports(db: Session, status: str, cycleway_id: int | None = None) -> li
 
 def get(db: Session, report_id: int) -> Report | None:
     return db.get(Report, report_id)
+
+
+def published_counts(db: Session) -> dict[int, int]:
+    query = (
+        select(Report.cycleway_id, func.count())
+        .where(Report.status == "published")
+        .group_by(Report.cycleway_id)
+    )
+    return dict(db.execute(query).all())

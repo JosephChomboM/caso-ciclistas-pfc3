@@ -14,3 +14,11 @@ class CyclewayOut(BaseModel):
     source: str
     is_demo: bool
     updated_at: datetime
+
+
+class RecommendationOut(BaseModel):
+    cycleway: CyclewayOut
+    match_score: float
+    published_reports: int
+    reasons: list[str]
+    method: str = "Reglas de coincidencia de distancia y reportes publicados"

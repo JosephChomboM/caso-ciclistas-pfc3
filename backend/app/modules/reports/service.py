@@ -29,3 +29,8 @@ def moderate(db: Session, report_id: int, moderator_id: int, decision: str) -> R
     db.add(ModerationAction(report_id=row.id, moderator_id=moderator_id, decision=decision))
     db.commit()
     return ReportOut.model_validate(row)
+
+
+def published_counts(db):
+    """Estadística pública: nunca incluye reportes pendientes ni identidad del autor."""
+    return repository.published_counts(db)
